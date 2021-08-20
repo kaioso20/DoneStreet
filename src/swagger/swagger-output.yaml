@@ -1,0 +1,93 @@
+swagger: '2.0'
+info:
+  title: 'DoneStreet Project'
+  version: '1.0.0'
+  description: 'Swagger Starter for DoneStreet'
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    in: header
+    name: Authorization
+schemes:
+  - http
+  - https
+responses:
+  UnauthorizedError:
+    description: 'Invalid Token'
+  InternalServerError:
+    description: 'Internal Server Error'
+paths: 
+  /login:
+    get: 
+      tags:
+        - 'DB) Login'
+      summary: Do user login and generate JWT (json web token)
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/xml
+      parameters: 
+        - name: documentNumber
+          in: query
+          description: User document number
+          type: string
+          required: true
+        - name: password
+          in: query
+          description: user password
+          type: string
+          required: true
+      responses: 
+        200:
+          $ref: '#/definitions/loginSuccessResponse'
+        401:
+          $ref: '#/responses/UnauthorizedError'
+        406:
+          description: 'Something wrong with document number'
+        500:
+          $ref: '#/responses/InternalServerError'
+  /rel:
+    get: 
+      tags: 
+        - "DB) Rel"
+      summary: teste
+      operationId: uploadFile
+      security:
+        - Bearer: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/xml
+      responses: 
+        200:
+          $ref: '#/definitions/loginSuccessResponse'
+        401: 
+          $ref: '#/responses/UnauthorizedError'
+        500:
+          $ref: '#/responses/InternalServerError'
+definitions: 
+  loginSuccessResponse: 
+    type: object
+    properties: 
+      id: 
+        type: string
+        example: 2
+      documentNumber: 
+        type: number
+        example: 02635285020
+      email: 
+        type: string
+        example: gabardo.caiorafael@gmail.com
+      name: 
+        type: string
+        example: Caio Rafael
+      register: 
+        type: string
+        format: date-time
+        example: '2021-07-13T13:41:33.000Z'
+externalDocs: 
+  description: Find out more about Swagger
+  url: http://swagger.io
+

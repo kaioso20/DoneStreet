@@ -1,0 +1,7 @@
+templates,
+templates\mail,
+test
+
+# Ignore all HTML & CSS files:
+*.html
+*.css
