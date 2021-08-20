@@ -18,6 +18,4 @@ npm start
 
 And finished, you will run your project in port:7500 in your localhost.
 
-Enjoy!! # DoneStreet
-# a
-# DoneStreet
+Enjoy!!
