@@ -1,6 +1,6 @@
 [
-    { "documentNumber": 10, "password": 1213  },
-    { "documentNumber": 16, "password": 15682  },
-    { "documentNumber": 17, "password": 1542  },
-    { "documentNumber": 25, "password": 198555  }   
+    { "documentNumber": 10, "password": 1213 , "secret": "doneStreetSecret" },
+    { "documentNumber": 16, "password": 15682 , "secret": "doneStreetSecret" },
+    { "documentNumber": 17, "password": 1542 , "secret": "doneStreetSecret" },
+    { "documentNumber": 25, "password": 198555, "secret": "doneStreetSecret"  }
 ]

@@ -1,6 +1,6 @@
 'use strict';
 
-const { InternalServerError, NotFound } = require('../languages/languageSet')();
+const { InternalServerError } = require('../languages/languageSet')();
 const { getLoginServer } = require('../service/loginService');
 
 module.exports.getLogin = (req, res) => {
@@ -12,9 +12,7 @@ module.exports.getLogin = (req, res) => {
   try {
     const response = getLoginServer(input);
 
-    return res
-      .send(!Object.keys(response).length ? NotFound : response)
-      .status(200);
+    return res.send(response).status(200);
   } catch (error) {
     return res.send(InternalServerError).status(500);
   }

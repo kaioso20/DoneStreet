@@ -1,8 +1,8 @@
 const JWT = require('jsonwebtoken');
 
-const jwtEncrypt = ({ userId, userDoc }) =>
-  `Bearer ${JWT.sign({ userId, userDoc }, process.env.ENV_JWT_ENCRYPTION, {
-    expiresIn: parseInt(process.env.ENV_JWT_EXPIRATION),
+const jwtEncrypt = ({ userSecret, userDoc }) =>
+  `Bearer ${JWT.sign({ userSecret, userDoc }, 'doneStreet', {
+    expiresIn: 3600,
   })}`;
 
 const jwtDecrypt = (token = null) => {
