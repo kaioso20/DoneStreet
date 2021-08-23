@@ -4,8 +4,14 @@ module.exports.InvalidToken = {
   error: 'Unauthorized',
   message: 'Token Inválido',
 };
+
 module.exports.NotFound = {
-  statusCode: 200,
-  error: 'ok',
   message: 'Nada foi encontrado!',
+};
+
+module.exports.InvalidPassword = {
+  message: 'Senha Inválida',
+};
+module.exports.InvalidDocument = {
+  message: 'Documento Inválida',
 };
