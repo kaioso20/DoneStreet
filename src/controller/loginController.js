@@ -1,6 +1,6 @@
 'use strict';
 
-const { InternalServerError, NotFound } = require('../languages/languageSet');
+const { InternalServerError, NotFound } = require('../languages/languageSet')();
 const { getLoginServer } = require('../service/loginService');
 
 module.exports.getLogin = (req, res) => {
