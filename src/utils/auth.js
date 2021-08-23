@@ -1,22 +1,25 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
+const { jwtVerification } = require('./crypo');
 const { InvalidToken } = require('../languages/languageSet')();
-const sharedSecret = 'doneStreet';
 
 exports.validationJWT = (req, res, next) => {
-  let bearer = req.headers.authorization;
+  try {
+    let bearer = req.headers.authorization;
 
-  if (!!!bearer) return invalidToken(res);
+    if (!!!bearer) return invalidToken(res);
 
-  const token = bearer.replace('Bearer ', '');
+    const token = bearer.replace('Bearer ', '');
 
-  jwt.verify(token, sharedSecret, (verificationError, decodedToken) => {
-    if (verificationError != null) return invalidToken(res);
+    const validation = jwtVerification(token);
 
-    req.auth = decodedToken;
+    if (!!validation.verificationError) return invalidToken(res);
+
+    req.auth = validation.auth;
     return next();
-  });
+  } catch (error) {
+    return invalidToken(res);
+  }
 };
 
 const invalidToken = (res) =>
