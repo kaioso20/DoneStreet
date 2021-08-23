@@ -2,7 +2,7 @@
 const { NotFound, InvalidDocument, InvalidPassword } =
   require('../languages/languageSet')();
 const { getLoginRepository } = require('../repository/loginRepository');
-const { jwtEncrypt } = require('../utils/criptografia');
+const { jwtEncrypt } = require('../utils/crypo');
 
 module.exports.getLoginServer = ({ documentNumber, password }) => {
   try {
