@@ -2,7 +2,7 @@
 
 const jwt = require('jsonwebtoken');
 const { InvalidToken } = require('../languages/languageSet')();
-const sharedSecret = process.env.ENV_JWT_ENCRYPTION;
+const sharedSecret = 'doneStreet';
 
 exports.validationJWT = (req, res, next) => {
   let bearer = req.headers.authorization;
