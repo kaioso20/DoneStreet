@@ -1,9 +1,9 @@
 'use strict';
 
-const userDB = require('../data/userDB');
+const usuarioDB = require('../data/userDB');
 
 module.exports.getLoginRepository = (documentNumber, password) =>
-  userDB.find(
+  usuarioDB.find(
     (eachUser) =>
       eachUser.documentNumber == documentNumber && eachUser.password == password
   );

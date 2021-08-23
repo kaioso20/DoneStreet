@@ -1,6 +1,6 @@
 # DoneStreet Project - Swagger
 
-This project is an development with swagger (v 2.0) for 1st phase. 
+This project is an development with swagger (v 2.0). 
 
 ## Installation
 
@@ -19,3 +19,6 @@ npm start
 And finished, you will run your project in port:7500 in your localhost.
 
 Enjoy!!
+___
+### Author
+- Caio Rafael

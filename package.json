@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
-    "eslint": "eslint ../backend-portal-admin --fix"
+    "eslint": "eslint ../DoneStreets --fix"
   },
   "keywords": [],
   "author": "",

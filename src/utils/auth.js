@@ -1,7 +1,7 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
-const { InvalidToken } = require('../languages/ptBR');
+const { InvalidToken } = require('../languages/languageSet');
 const sharedSecret = 'doneStreet';
 
 exports.validationJWT = (req, res, next) => {

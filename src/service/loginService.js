@@ -1,13 +1,12 @@
 'use strict';
 const { getLoginRepository } = require('../repository/loginRepository');
-const { encrypt, jwtEncrypt } = require('../utils/criptografia');
+const { jwtEncrypt } = require('../utils/criptografia');
 
 module.exports.getLoginServer = ({ documentNumber, password }) => {
   try {
-    const bankResponse = getLoginRepository(
-      documentNumber,
-      encrypt(password).content
-    );
+    const bankResponse = getLoginRepository(documentNumber, password);
+
+    if (!!!bankResponse) return {};
 
     const bearerAuthToken = jwtEncrypt({
       userId: bankResponse.userId,
