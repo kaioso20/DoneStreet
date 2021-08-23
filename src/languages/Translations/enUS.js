@@ -8,3 +8,10 @@ module.exports.InvalidToken = {
 module.exports.NotFound = {
   message: 'Nothing has found!',
 };
+
+module.exports.InvalidPassword = {
+  message: 'Invalid Password',
+};
+module.exports.InvalidDocument = {
+  message: 'Invalid Document',
+};
