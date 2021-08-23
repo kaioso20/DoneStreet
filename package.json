@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage --verbose",
     "dev": "nodemon src/index.js",
-    "eslint": "eslint ../DoneStreets --fix"
+    "eslint": "eslint ../DoneStreet --fix"
   },
   "keywords": [],
   "author": "",
