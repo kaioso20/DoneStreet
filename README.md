@@ -1,3 +1,4 @@
+[![NPM version](https://badge.fury.io/js/esta.svg)](http://badge.fury.io/js/esta)
 # DoneStreet Project - Swagger
 
 This project is an development with swagger (v 2.0). 
