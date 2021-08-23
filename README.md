@@ -1,6 +1,6 @@
 # DoneStreet Project - Swagger
 
-This project is an development with swagger (v 2.0). 
+This project is an development with swagger (v 2.0) to documentation, jest to unitary tests and JWT to authentication. 
 
 ## Installation
 
