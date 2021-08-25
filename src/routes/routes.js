@@ -1,4 +1,5 @@
 const { getLogin } = require('../controller/loginController');
+const { getUser } = require('../controller/userController');
 const { swaggerReader } = require('../utils/readFile');
 const { validationJWT } = require('../utils/auth');
 
@@ -16,7 +17,7 @@ swaggerReader(app);
 //Rotas do projeto
 router.get('/login', getLogin);
 
-router.get('/rel', validationJWT, (req, res) => res.status(200).send('true'));
+router.get('/userInfos', validationJWT, getUser);
 
 app.use('/', router);
 module.exports = app;

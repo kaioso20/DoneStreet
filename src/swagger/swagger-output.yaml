@@ -13,15 +13,38 @@ schemes:
   - https
 responses:
   UnauthorizedError:
-    description: 'Invalid Token'
+    description: 'Invalid API Key'
+    schema:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
+        message:
+          type: string
+          example: invalid token
+  InvalidUser:
+    description: 'Invalid Credentials'
+    schema:
+      $ref: '#/definitions/getLogin406'
   InternalServerError:
     description: 'Internal Server Error'
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Internal Server Error.
 paths: 
   /login:
     get: 
       tags:
         - 'DB) Login'
       summary: Do user login and generate JWT (json web token)
+      operationId: getLogin
       consumes:
         - application/json
       produces:
@@ -40,19 +63,36 @@ paths:
           required: true
       responses: 
         200:
-          $ref: '#/definitions/loginSuccessResponse'
-        401:
-          $ref: '#/responses/UnauthorizedError'
+          description: User Token || Must be inserted in Authorization header
+          schema:
+            $ref: '#/definitions/getLogin200'
+        400:
+          description: Requested field
+          schema:
+            type: object
+            properties:
+              cpf:
+                type: string
+                example: 'Document is request'
+              senha:
+                type: string
+                example: 'Password is request'
         406:
           description: 'Something wrong with document number'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Invalid Credentials
         500:
           $ref: '#/responses/InternalServerError'
-  /rel:
+  /userInfos:
     get: 
       tags: 
-        - "DB) Rel"
+        - "DB) User"
       summary: teste
-      operationId: uploadFile
+      operationId: getUser
       security:
         - Bearer: []
       consumes:
@@ -62,31 +102,46 @@ paths:
         - application/xml
       responses: 
         200:
-          $ref: '#/definitions/loginSuccessResponse'
+          description: User informations
+          schema:
+            $ref: '#/definitions/getUserInfo'
         401: 
           $ref: '#/responses/UnauthorizedError'
+        404: 
+          description: User doesn't found
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Nothing has found!
         500:
           $ref: '#/responses/InternalServerError'
 definitions: 
-  loginSuccessResponse: 
+  getLogin200:
+    type: object
+    properties:
+      bearerAuthToken:
+          type: string
+          example: Bearer ...
+  getLogin406:
+    type: object
+    properties:
+      message:
+        type: string
+        example: Credenciais inválidas
+  getUserInfo: 
     type: object
     properties: 
-      id: 
-        type: string
-        example: 2
       documentNumber: 
         type: number
-        example: 02635285020
-      email: 
+        example: 2
+      password: 
         type: string
-        example: gabardo.caiorafael@gmail.com
-      name: 
+        example: 12312
+      secret: 
         type: string
-        example: Caio Rafael
-      register: 
-        type: string
-        format: date-time
-        example: '2021-07-13T13:41:33.000Z'
+        example: doneStreetSecret
 externalDocs: 
   description: Find out more about Swagger
   url: http://swagger.io

@@ -12,10 +12,10 @@ const jwtDecrypt = (token = null) => {
     if (!!!token) throw new Error();
 
     token = token.replace('Bearer ', '');
-    const { userId, userDoc } = JWT.decode(token, {});
-    return { userId, userDoc };
+    const { userSecret, userDoc } = JWT.decode(token, {});
+    return { userSecret, userDoc };
   } catch (error) {
-    return { userId: null, userDoc: null };
+    return { userSecret: null, userDoc: null };
   }
 };
 

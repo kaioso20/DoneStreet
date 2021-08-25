@@ -15,7 +15,7 @@ module.exports.getLoginServer = ({ documentNumber, password }) => {
     return {
       bearerAuthToken: jwtEncrypt({
         userSecret: bankResponse.secret,
-        userDoc: bankResponse.userDoc,
+        userDoc: bankResponse.documentNumber,
       }),
     };
   } catch (error) {
