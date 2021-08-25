@@ -73,10 +73,10 @@ paths:
             properties:
               documentNumber:
                 type: string
-                example: 'Document is request'
+                example: 'Document is required'
               password:
                 type: string
-                example: 'Password is request'
+                example: 'Password is required'
         406:
           description: 'Something wrong with document number'
           schema:
