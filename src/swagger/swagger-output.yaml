@@ -71,10 +71,10 @@ paths:
           schema:
             type: object
             properties:
-              cpf:
+              documentNumber:
                 type: string
                 example: 'Document is request'
-              senha:
+              password:
                 type: string
                 example: 'Password is request'
         406:
