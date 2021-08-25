@@ -9,9 +9,13 @@ module.exports.NotFound = {
   message: 'Nothing has found!',
 };
 
-module.exports.InvalidPassword = {
-  message: 'Invalid Password',
+module.exports.Validation = {
+  Password: { message: 'Password is required' },
+  Document: { message: 'Document is required' },
 };
-module.exports.InvalidDocument = {
-  message: 'Invalid Document',
+
+module.exports.Login = {
+  InvalidUser: { message: 'Invalid Credentials' },
+  InvalidPassword: { message: 'Invalid Password' },
+  InvalidDocument: { message: 'Invalid Document' },
 };

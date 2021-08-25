@@ -1,23 +1,23 @@
 'use strict';
-const { NotFound, InvalidDocument, InvalidPassword } =
-  require('../languages/languageSet')();
+const { Login, Validation } = require('../languages/languageSet')();
 const { getLoginRepository } = require('../repository/loginRepository');
 const { jwtEncrypt } = require('../utils/crypo');
 
 module.exports.getLoginServer = ({ documentNumber, password }) => {
   try {
-    if (!!!documentNumber) return InvalidDocument;
-    if (!!!password) return InvalidPassword;
+    if (!!!documentNumber) return Validation.Document;
+    if (!!!password) return Validation.Password;
 
     const bankResponse = getLoginRepository(documentNumber, password);
 
-    if (!!!bankResponse) return NotFound;
+    if (!!!bankResponse) return Login.InvalidUser;
 
-    const bearerAuthToken = jwtEncrypt({
-      userSecret: bankResponse.secret,
-      userDoc: bankResponse.userDoc,
-    });
-    return { bearerAuthToken };
+    return {
+      bearerAuthToken: jwtEncrypt({
+        userSecret: bankResponse.secret,
+        userDoc: bankResponse.userDoc,
+      }),
+    };
   } catch (error) {
     return error;
   }
