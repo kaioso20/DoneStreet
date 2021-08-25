@@ -6,12 +6,12 @@ const { correctUser } = require('./mock/loginMock')
 
 describe('Users', () => {
 		
-		it('id do usuário indo vazio', () =>
+		it('userDoc empty', () =>
     expect(getUserServer({userDoc: null})).toMatchObject(Login.InvalidUser));
 		
-		it('id do usuário inexistente', () =>
+		it('userDoc wrong', () =>
     expect(getUserServer({userDoc : 999999999})).toMatchObject(NotFound));
 		
-		it('id do usuário existente', () =>
+		it('Correct userDoc', () =>
     expect(getUserServer({ userDoc: correctUser.documentNumber })).toHaveProperty('documentNumber'))
 });
