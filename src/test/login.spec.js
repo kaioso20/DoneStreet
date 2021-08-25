@@ -1,13 +1,11 @@
-const { NotFound, InvalidDocument, InvalidPassword } = require('../languages/languageSet')();
+const { Login, Validation } = require('../languages/Translations/enUS');
 const { getLoginServer } = require('../service/loginService');
-
-const wrongUser = { documentNumber: 1555556, password: 12121212  }
-const nullDocumentUser = { documentNumber: null, password: 12121212  }
-const nullPasswordUser = { documentNumber: 1555556, password: null  }
+const { correctUser, wrongUser, nullPasswordUser, nullDocumentUser } = require('./mock/loginMock');
 
 describe('environmental variables', () => {
-    test('Wrong login - not match', () => expect(getLoginServer(wrongUser)).toBe(NotFound))
-    test('Wrong login - null password', () => expect(getLoginServer(nullPasswordUser)).toBe(InvalidPassword))
-    test('Wrong login - null document', () => expect(getLoginServer(nullDocumentUser)).toBe(InvalidDocument))
+    test('Correct login', () => expect(getLoginServer(correctUser)).toHaveProperty('bearerAuthToken'));
+    test('Wrong login - not match', () => expect(getLoginServer(wrongUser)).toBe(Login.InvalidUser))
+    test('Wrong login - null password', () => expect(getLoginServer(nullPasswordUser)).toBe(Validation.Password))
+    test('Wrong login - null document', () => expect(getLoginServer(nullDocumentUser)).toBe(Validation.Document))
   });
 
