@@ -9,6 +9,11 @@ module.exports.NotFound = {
   message: 'Nada foi encontrado!',
 };
 
+module.exports.Validation = {
+  Password: { message: 'Senha é obrigatória' },
+  Document: { message: 'Documento é obrigatório' },
+};
+
 module.exports.Login = {
   InvalidUser: { message: 'Credenciais inválidas' },
   InvalidPassword: { message: 'Senha Inválida' },
